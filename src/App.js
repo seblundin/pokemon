@@ -3,22 +3,41 @@ import { useEffect, useState } from "react";
 import Pokemon from "./components/Pokemon";
 
 const App = () => {
-  const [pokemon, setPokemon] = useState([]);
-  const pokemons = 1154;
+  const [pokemons, setPokemons] = useState([]);
   const slice = 20;
+
   useEffect(() => {
-    fetch(`https://pokeapi.co/api/v2/pokemon?offset=${Math.random() * (pokemons - slice)}?limit=${slice}`)
+    fetch("https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0")
       .then(response => response.json())
       .then(data => {
-        setPokemon(data.results);
+        setPokemons(data.results);
       });
   }, []);
 
-  return (
-    <ul>
-      {pokemon.map(p => <Pokemon url={p.url} key={p.name}/>)}
-    </ul>
-  );
+  const getRandomPokemons = () => {
+    const result = {};
+    for (let i = 0; i < slice; i++) {
+      let randInt = Math.floor(Math.random() * pokemons.length);
+      result[pokemons[randInt].name] = pokemons[randInt].url;
+    }
+    
+    console.log(result);
+    return result;
+  };
+
+  if (pokemons.length > 0) {
+    const randomlySelected = getRandomPokemons();
+
+    return (
+      Object.entries(randomlySelected).map(([k, value]) => {
+        return <Pokemon url={value} key={k}/>;
+      })
+    );
+  }
+  return <p>loading...</p>;
+  
 };
+
+
 
 export default App;
