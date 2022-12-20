@@ -1,5 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import Pokemon from "./components/Pokemon";
 
 const App = () => {
   const [pokemon, setPokemon] = useState([]);
@@ -15,7 +16,7 @@ const App = () => {
 
   return (
     <ul>
-      {pokemon.map(p => <li key={p.url}> {p.name} </li>)}
+      {pokemon.map(p => <Pokemon url={p.url} key={p.name}/>)}
     </ul>
   );
 };
