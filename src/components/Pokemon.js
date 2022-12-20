@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
 const Pokemon = ({ url }) => {
-  const picUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/";
+  const picUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/";
   const [data, setData] = useState({});
 
   useEffect(() => {
