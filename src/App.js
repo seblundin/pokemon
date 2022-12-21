@@ -21,7 +21,6 @@ const App = () => {
       result[pokemons[randInt].name] = pokemons[randInt].url;
     }
     
-    console.log(result);
     return result;
   };
 
