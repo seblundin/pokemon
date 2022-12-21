@@ -4,18 +4,18 @@
  * @returns An array of randomly selected items with no duplicates.
  */
 const selectRandom = (array, slice) => {
-  const selected = [];
-  let i = 0;
+  const selected = []
+  let i = 0
   while (i < slice) {
-    let randInt = Math.floor(Math.random() * array.length);
-    let item = array[randInt];
+    let randInt = Math.floor(Math.random() * array.length)
+    let item = array[randInt]
     if (!(item in selected)) {
-      selected.push(item);
-      i++;
+      selected.push(item)
+      i++
     }
   }
   
-  return { ...selected };
-};
+  return { ...selected }
+}
 
-export default selectRandom;
+export default selectRandom

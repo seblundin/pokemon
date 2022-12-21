@@ -1,13 +1,13 @@
-import React from "react";
-import GridItem from "./GridItem";
+import React from "react"
+import GridItem from "./GridItem"
 
 const Grid = ({ pokemon }) => {
   return <div style={gridStyle}>
     {Object.entries(pokemon).map(([ key, value ]) => {
-      return <GridItem url={value.url} key={key}/>;
+      return <GridItem url={value.url} key={key}/>
     })}
-  </div>;
-};
+  </div>
+}
 
 const gridStyle = {
   display: "grid",
@@ -17,6 +17,6 @@ const gridStyle = {
   margin: "auto",
 
   textAlign: "center",
-};
+}
 
-export default Grid;
+export default Grid

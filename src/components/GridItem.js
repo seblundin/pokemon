@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
-import PokemonService from "../services/PokemonService";
-import Image from "./Image";
+import React, { useEffect, useState } from "react"
+import PokemonService from "../services/PokemonService"
+import Image from "./Image"
 
 const GridItem = ({ url }) => {
-  const [pokemon, setPokemon] = useState({});
+  const [pokemon, setPokemon] = useState({})
 
   useEffect(() => {
     PokemonService
       .getPokemon(null, null, url)
-      .then(pokemon => setPokemon(pokemon));
-  }, []);
+      .then(pokemon => setPokemon(pokemon))
+  }, [])
 
   return pokemon ?
     <div style={itemStyle}>
@@ -17,9 +17,9 @@ const GridItem = ({ url }) => {
       <Image id={pokemon.id} name={pokemon.name} small={true}/>
     </div>
     :
-    <p>loading...</p>;
-};
+    <p>loading...</p>
+}
 
-const itemStyle = { border: "1px solid rgba(0, 0, 0, 0.8)" };
+const itemStyle = { border: "1px solid rgba(0, 0, 0, 0.8)" }
 
-export default GridItem;
+export default GridItem

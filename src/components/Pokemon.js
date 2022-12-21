@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import Image from "./Image";
-import PokemonService from "../services/PokemonService";
+import React, { useEffect, useState } from "react"
+import Image from "./Image"
+import PokemonService from "../services/PokemonService"
 
 /**
  * A React component for displaying general info about a Pokemon.
@@ -9,14 +9,14 @@ import PokemonService from "../services/PokemonService";
  * @param {string} url The hyperlink to data for the Pokemon.
  */
 const Pokemon = ({ url }) => {
-  const [data, setData] = useState({});
+  const [data, setData] = useState({})
 
   // Fetch Pokemon data.
   useEffect(() => {
     PokemonService
       .getPokemon(null,null,url)
-      .then(pokemon => setData(pokemon));
-  }, []);
+      .then(pokemon => setData(pokemon))
+  }, [])
 
   //Once data is fetched, display data.
   return data && data.stats ?
@@ -27,7 +27,7 @@ const Pokemon = ({ url }) => {
       <Image id={data.id} name={data.name}/>
     </>
     :
-    <p>loading...</p>;
-};
+    <p>loading...</p>
+}
 
-export default Pokemon;
+export default Pokemon
