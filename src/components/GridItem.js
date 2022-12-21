@@ -9,7 +9,7 @@ const GridItem = ({ url }) => {
     PokemonService
       .getPokemon(null, null, url)
       .then(pokemon => setPokemon(pokemon))
-  }, [])
+  }, [url])
 
   return pokemon ?
     <div style={itemStyle}>
