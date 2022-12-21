@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import Pokemon from "./components/Pokemon";
+import Grid from "./components/Grid";
 import PokemonService from "./services/PokemonService";
 import selectRandom from "./util/ArrayUtil";
 
@@ -14,12 +14,7 @@ const App = () => {
       .then(received => setPokemons(selectRandom(received, slice)));
   }, []);
 
-  return pokemons ?
-    Object.entries(pokemons).map(([ key, value ]) => {
-      return <Pokemon url={value.url} key={key}/>;
-    })
-    : 
-    <p>loading...</p>;
+  return pokemons ? <Grid pokemon={pokemons}/> : <p>loading...</p>;
 };
 
 export default App;

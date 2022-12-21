@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
 import Image from "./Image";
 import PokemonService from "../services/PokemonService";
 
@@ -29,10 +28,6 @@ const Pokemon = ({ url }) => {
     </>
     :
     <p>loading...</p>;
-};
-
-Pokemon.propTypes = {
-  url: PropTypes.string.isRequired
 };
 
 export default Pokemon;
