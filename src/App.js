@@ -6,14 +6,18 @@ const App = () => {
   const [pokemons, setPokemons] = useState([]);
   const slice = 20;
 
+  // Fetch all pokemon from pokeapi.
   useEffect(() => {
     fetch("https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0")
       .then(response => response.json())
-      .then(data => {
-        setPokemons(data.results);
-      });
+      .then(data => setPokemons(data.results));
   }, []);
 
+  /**
+   * Get slice amount of Pokemon from array pseudorandomly.
+   * 
+   * @returns An array of randomly selected Pokemon.
+   */
   const getRandomPokemons = () => {
     const result = {};
     for (let i = 0; i < slice; i++) {
@@ -36,7 +40,5 @@ const App = () => {
   return <p>loading...</p>;
   
 };
-
-
 
 export default App;
