@@ -7,13 +7,13 @@ import PropTypes from "prop-types";
  * @param {number} id Id for Pokemon.
  * @param {string} name Pokemon name.
  */
-const Image = ({ id, name }) => {
+const Image = ({ id, name, small }) => {
   const picUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/";
   const picUrl2 = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/";
 
   return <img alt={`A pokemon named ${name}`}
-    src={`${picUrl}${id}.png`}
-    
+    src = {small ? `${picUrl2}${id}.png` : `${picUrl}${id}.png`}
+
     // If first source doesn't work, switch to secondary source.
     onError={(e) => {
       if (e.target.src !== `${picUrl2}${id}.png`)
@@ -24,7 +24,8 @@ const Image = ({ id, name }) => {
 
 Image.propTypes = {
   id: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired
+  name: PropTypes.string.isRequired,
+  small: PropTypes.bool
 };
 
 export default Image;
