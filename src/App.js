@@ -1,44 +1,25 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import Pokemon from "./components/Pokemon";
+import PokemonService from "./services/PokemonService";
+import selectRandom from "./util/ArrayUtil";
 
 const App = () => {
   const [pokemons, setPokemons] = useState([]);
   const slice = 20;
 
-  // Fetch all pokemon from pokeapi.
+  // Get slice amount of random Pokemon.
   useEffect(() => {
-    fetch("https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0")
-      .then(response => response.json())
-      .then(data => setPokemons(data.results));
+    PokemonService.getAllPokemon()
+      .then(received => setPokemons(selectRandom(received, slice)));
   }, []);
 
-  /**
-   * Get slice amount of Pokemon from array pseudorandomly.
-   * 
-   * @returns An array of randomly selected Pokemon.
-   */
-  const getRandomPokemons = () => {
-    const result = {};
-    for (let i = 0; i < slice; i++) {
-      let randInt = Math.floor(Math.random() * pokemons.length);
-      result[pokemons[randInt].name] = pokemons[randInt].url;
-    }
-    
-    return result;
-  };
-
-  if (pokemons.length > 0) {
-    const randomlySelected = getRandomPokemons();
-
-    return (
-      Object.entries(randomlySelected).map(([k, value]) => {
-        return <Pokemon url={value} key={k}/>;
-      })
-    );
-  }
-  return <p>loading...</p>;
-  
+  return pokemons ?
+    Object.entries(pokemons).map(([ key, value ]) => {
+      return <Pokemon url={value.url} key={key}/>;
+    })
+    : 
+    <p>loading...</p>;
 };
 
 export default App;
