@@ -28,6 +28,7 @@ const App = () => {
 
   /**
    * Update search term state on search term change event.
+   * 
    * @param {object} event The change event.
    * @returns 
    */
@@ -52,6 +53,7 @@ const App = () => {
 
   /**
    * Set selected Pokemon as the one clicked on in the grid.
+   * 
    * @param {string} name 
    */
   const onSelection = (name) => {

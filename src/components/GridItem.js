@@ -2,9 +2,17 @@ import React, { useEffect, useState } from "react"
 import PokemonService from "../services/PokemonService"
 import Image from "./Image"
 
+/**
+ * An info card like component with Pokemon name and Image.
+ * 
+ * @param {string} url An url to Pokemon data.
+ * @param {function} onSelection Callback function for handling click event.
+ * @returns 
+ */
 const GridItem = ({ url, onSelection }) => {
   const [pokemon, setPokemon] = useState({})
 
+  // Update Pokemon on url change.
   useEffect(() => {
     PokemonService
       .getPokemon(url)
