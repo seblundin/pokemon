@@ -21,11 +21,15 @@ const App = () => {
   }, [])
 
   const onSearch = (event) => {
-    const term = event.target.value.toLowerCase()
+    const term = event.target.value.toLowerCase().trim()
+
+    if (term === "") {
+      setSearchTerm(term)
+      setPokemon(selectRandom(allPokemon, slice))
+      return
+    }
     setSearchTerm(term)
     setPokemon(allPokemon.filter(p => p.name.toLowerCase().includes(term)).slice(0,slice))
-
-    console.log(pokemon)
   }
 
   return pokemon ? 
