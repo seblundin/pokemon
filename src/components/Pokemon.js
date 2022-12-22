@@ -27,11 +27,11 @@ const Pokemon = ({ url, onExit }) => {
       <h2>Attack: {data.stats[1].base_stat}</h2>
       <h3>Abilities:</h3>
       <ul style={abilitiesStyle}>
-        {data.abilities.map(a => <li key={a}>{a.ability.name}</li>)}
+        {data.abilities.map(a => <li key={a.ability.url}>{a.ability.name}</li>)}
       </ul>
       <h3>Types:</h3>
       <ul style={abilitiesStyle}>
-        {data.types.map(t => <li key={t}>{t.type.name}</li>)}
+        {data.types.map(t => <li key={t.type.url}>{t.type.name}</li>)}
       </ul>
       <Image id={data.id} name={data.name}/>
     </div>

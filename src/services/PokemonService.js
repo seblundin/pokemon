@@ -1,11 +1,11 @@
 const getAllPokemon = async () => {
-  return await fetch("https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0")
+  return fetch("https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0")
     .then(response => response.json())
     .then(data => data.results)
 }
 
 const getPokemon = async (url) => {
-  return await fetch(url)
+  return fetch(url)
     .then(response => response.json())
     .then(pokemon => pokemon)
 }

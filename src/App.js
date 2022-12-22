@@ -6,6 +6,11 @@ import selectRandom from "./util/ArrayUtil"
 import SearchBar from "./components/SearchBar"
 import Pokemon from "./components/Pokemon"
 
+/**
+ * A Pokemon app that displays random Pokemon in a grid and some info of them
+ * in a info card type view.
+ * @returns 
+ */
 const App = () => {
   const [pokemon, setPokemon] = useState([])
   const [allPokemon, setAllPokemon] = useState([])
@@ -21,6 +26,11 @@ const App = () => {
       })
   }, [])
 
+  /**
+   * Update search term state on search term change event.
+   * @param {object} event The change event.
+   * @returns 
+   */
   const onSearch = (event) => {
     const term = event.target.value.toLowerCase().trim()
     setSearchTerm(term)
@@ -31,11 +41,19 @@ const App = () => {
     setPokemon(allPokemon.filter(p => p.name.toLowerCase().includes(term)).slice(0,slice))
   }
 
+  /**
+   * React to Pokemon info card exit button event.
+   * Clear search term and select random Pokemon.
+   */
   const onExit = () => {
     setSearchTerm("")
     setPokemon(selectRandom(allPokemon, slice))
   }
 
+  /**
+   * Set selected Pokemon as the one clicked on in the grid.
+   * @param {string} name 
+   */
   const onSelection = (name) => {
     setPokemon(allPokemon.filter(p => p.name === name))
   }
