@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import PokemonService from "../services/PokemonService"
 import Image from "./Image"
 
-const GridItem = ({ url }) => {
+const GridItem = ({ url, onSelection }) => {
   const [pokemon, setPokemon] = useState({})
 
   useEffect(() => {
@@ -12,10 +12,10 @@ const GridItem = ({ url }) => {
   }, [url])
 
   return pokemon ?
-    <div style={itemStyle}>
+    <button style={itemStyle} onClick={() => onSelection(pokemon.name)}>
       <p>{pokemon.name}</p>
       <Image id={pokemon.id} name={pokemon.name} small={true}/>
-    </div>
+    </button>
     :
     <p>loading...</p>
 }

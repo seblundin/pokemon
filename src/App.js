@@ -36,13 +36,18 @@ const App = () => {
     setPokemon(selectRandom(allPokemon, slice))
   }
 
+  const onSelection = (name) => {
+    setSearchTerm(name)
+    setPokemon(allPokemon.filter(p => p.name === name))
+  }
+
   if (pokemon && pokemon.length === 1) {
     return <Pokemon url={pokemon[0].url} onExit={onExit}></Pokemon>
   }
   return pokemon ? 
     <div style={appStyle}>
       <SearchBar handleContentChange={onSearch} content={searchTerm}/>
-      <Grid pokemon={pokemon}/>
+      <Grid pokemon={pokemon} onSelection={onSelection}/>
     </div>
     :
     <p>loading...</p>
