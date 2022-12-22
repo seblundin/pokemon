@@ -41,7 +41,9 @@ const App = () => {
   }
 
   if (pokemon && pokemon.length === 1) {
-    return <Pokemon url={pokemon[0].url} onExit={onExit}></Pokemon>
+    return <div style={appStyle}>
+      <Pokemon url={pokemon[0].url} onExit={onExit}></Pokemon>
+    </div>
   }
   return pokemon ? 
     <div style={appStyle}>
