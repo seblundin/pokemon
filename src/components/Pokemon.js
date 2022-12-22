@@ -8,7 +8,7 @@ import PokemonService from "../services/PokemonService"
  * 
  * @param {string} url The hyperlink to data for the Pokemon.
  */
-const Pokemon = ({ url }) => {
+const Pokemon = ({ url, onExit }) => {
   const [data, setData] = useState({})
 
   // Fetch Pokemon data.
@@ -21,7 +21,7 @@ const Pokemon = ({ url }) => {
   //Once data is fetched, display data.
   return data && data.stats ?
     <>
-      {console.log(data)}
+      <button onClick={() => onExit()}>X</button>
       <h1>{data.name}</h1>
       <h2>HP: {data.stats[0].base_stat}</h2>
       <Image id={data.id} name={data.name}/>

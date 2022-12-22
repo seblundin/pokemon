@@ -4,6 +4,7 @@ import Grid from "./components/Grid"
 import PokemonService from "./services/PokemonService"
 import selectRandom from "./util/ArrayUtil"
 import SearchBar from "./components/SearchBar"
+import Pokemon from "./components/Pokemon"
 
 const App = () => {
   const [pokemon, setPokemon] = useState([])
@@ -22,16 +23,22 @@ const App = () => {
 
   const onSearch = (event) => {
     const term = event.target.value.toLowerCase().trim()
-
+    setSearchTerm(term)
     if (term === "") {
-      setSearchTerm(term)
       setPokemon(selectRandom(allPokemon, slice))
       return
     }
-    setSearchTerm(term)
     setPokemon(allPokemon.filter(p => p.name.toLowerCase().includes(term)).slice(0,slice))
   }
 
+  const onExit = () => {
+    setSearchTerm("")
+    setPokemon(selectRandom(allPokemon, slice))
+  }
+
+  if (pokemon && pokemon.length === 1) {
+    return <Pokemon url={pokemon[0].url} onExit={onExit}></Pokemon>
+  }
   return pokemon ? 
     <div style={appStyle}>
       <SearchBar handleContentChange={onSearch} content={searchTerm}/>
