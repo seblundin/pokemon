@@ -8,7 +8,7 @@ import Pokemon from "./components/Pokemon"
 
 /**
  * A Pokemon app that displays random Pokemon in a grid and some info of them
- * in a info card type view.
+ * in an info card type of view.
  * @returns 
  */
 const App = () => {
