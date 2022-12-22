@@ -37,7 +37,6 @@ const App = () => {
   }
 
   const onSelection = (name) => {
-    setSearchTerm(name)
     setPokemon(allPokemon.filter(p => p.name === name))
   }
 

@@ -7,7 +7,7 @@ const GridItem = ({ url, onSelection }) => {
 
   useEffect(() => {
     PokemonService
-      .getPokemon(null, null, url)
+      .getPokemon(url)
       .then(pokemon => setPokemon(pokemon))
   }, [url])
 

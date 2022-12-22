@@ -14,7 +14,7 @@ const Pokemon = ({ url, onExit }) => {
   // Fetch Pokemon data.
   useEffect(() => {
     PokemonService
-      .getPokemon(null,null,url)
+      .getPokemon(url)
       .then(pokemon => setData(pokemon))
   }, [])
 
